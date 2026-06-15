@@ -149,6 +149,24 @@ setTimeout(function(){const label=document.getElementById("hajareAiLabel");if(la
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js');
 }
+  <script>
+let deferredPrompt;
+const installBtn = document.getElementById("installAppBtn");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = "inline-block";
+});
+
+installBtn.addEventListener("click", async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  installBtn.style.display = "none";
+});
+</script>
 </script>
 </body>
 </html>
