@@ -126,6 +126,7 @@ function hajareProcessChat(text){
  if(hajareLead.step==="problem"){hajareLead.problem=text;hajareLead.step="done";hajareAddMsg("Thank you ✅ Aapki enquiry owner ko send ho rahi hai.");submitLeadToSheet({name:hajareLead.name,mobile:hajareLead.mobile,address:hajareLead.address,service:hajareLead.service,problem:hajareLead.problem,source:"AI Chatbot"});setTimeout(function(){hajareAddMsg("Urgent service ke liye WhatsApp/Call bhi kar sakte hain.");hajareShowActionButtons();},700);return;}
  hajareAddMsg("Aapki enquiry already recorded hai. Urgent ho to Call Now ya WhatsApp button use kare.");
 }
+ 
 const data = {
   name: document.getElementById("bookingName").value,
   mobile: document.getElementById("bookingMobile").value,
@@ -144,6 +145,11 @@ function hajareShowActionButtons(){
  body.appendChild(wa);body.appendChild(call);body.scrollTop=body.scrollHeight;
 }
 setTimeout(function(){const label=document.getElementById("hajareAiLabel");if(label)label.innerText="👋 May I Help You?";},2000);
+</script>
+ <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js');
+}
 </script>
 </body>
 </html>
