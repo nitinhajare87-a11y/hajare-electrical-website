@@ -9,13 +9,13 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "app-icon.png",
+      "src": "chatbot.png",
       "sizes": "192x192",
       "type": "image/png"
     },
    "icons": [
   {
-    "src": "app-icon.png",
+    "src": "chatbot.png",
     "sizes": "512x512",
     "type": "image/png"
   }
