@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nitinhajare87-a11y.github.io/hajare-electrical-website/sitemap.xml
