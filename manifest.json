@@ -1,0 +1,22 @@
+{
+  "name": "Hajare Electrical & Electronics Services",
+  "short_name": "Hajare Electric",
+  "description": "24x7 Electrician Services in Pune, PCMC, Charholi, Lohegaon and Dhanori",
+  "start_url": "/hajare-electrical-website/",
+  "display": "standalone",
+  "background_color": "#0b1d35",
+  "theme_color": "#0b1d35",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "chatbot.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "chatbot.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
