@@ -26,7 +26,29 @@ content="Electrician Pune, Electrician Charholi, Electrician Lohegaon, Fan Repai
   <div class="logo-wrap"><img src="chatbot.png"><div><b>HAJARE ELECTRICAL & ELECTRONICS SERVICES</b><small>Customer Delight Is Our Reward</small></div></div>
   <nav><a href="#home">Home</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#booking">Booking</a><a href="#contact">Contact</a></nav>
 </header>
+<script>
+let deferredPrompt;
+const installBtn = document.getElementById("installAppBtn");
 
+window.addEventListener("beforeinstallprompt", function(e) {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = "inline-block";
+});
+
+if (installBtn) {
+  installBtn.addEventListener("click", async function() {
+    if (!deferredPrompt) {
+      alert("Install option available nahi hai. Chrome menu ⋮ se 'Add to Home screen' use karo.");
+      return;
+    }
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    installBtn.style.display = "none";
+  });
+}
+</script>
 <section id="home" class="hero"><div class="hero-overlay"></div><div class="hero-card">
   <span class="pill">Pune & PCMC Trusted Electrician</span>
   <h1>Big or Small,<br><span>We Do Work All</span></h1>
