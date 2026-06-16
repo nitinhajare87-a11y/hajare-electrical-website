@@ -117,7 +117,12 @@ if (installBtn) {
 
 <footer><b>HAJARE ELECTRICAL & ELECTRONICS SERVICES</b><p>Customer Delight Is Our Reward • Big or Small, We Do Work All</p><p>© 2026 All Rights Reserved</p></footer>
 
-<div class="mobile-bar"><a href="tel:+918800466063">📞 Call</a><a href="https://wa.me/918800466063?text=Hello%20Hajare%20Electricals,%20I%20need%20service.">💬 WhatsApp</a><a href="#booking">📝 Book</a></div>
+<div class="mobile-bar">
+  <a href="tel:+918800466063">📞 Call</a>
+  <a href="https://wa.me/918800466063?text=Hello%20Hajare%20Electricals,%20I%20need%20service.">💬 WhatsApp</a>
+  <a href="#booking">📝 Book</a>
+  <a href="#" id="installAppBtn">📱 Install</a>
+</div>
 
 <div class="hajare-ai-label" id="hajareAiLabel">May I Help You?</div><button class="hajare-ai-launcher" onclick="hajareToggleChat()" aria-label="Open AI Chatbot"><img src="chatbot.png" alt="AI Chatbot" onerror="this.style.display='none'; this.parentElement.innerHTML='🤖';"></button>
 <div class="hajare-chatbot" id="hajareChatbot"><div class="hajare-chat-head"><div class="hajare-chat-title"><img src="chatbot.png" onerror="this.style.display='none'"><div><b>May I Help You?</b><span>Hajare Electrical AI Assistant</span></div></div><button class="hajare-close" onclick="hajareToggleChat()">×</button></div><div class="hajare-chat-body" id="hajareChatBody"><div class="hajare-msg hajare-bot">Namaste! 👋 Main Hajare Electrical AI Assistant hoon.\n\nAapko kis service ki enquiry karni hai?</div><div class="hajare-quick"><button onclick="hajareChooseService('House Wiring')">House Wiring</button><button onclick="hajareChooseService('Fan & Light Repair')">Fan/Light</button><button onclick="hajareChooseService('MCB / DB Installation')">MCB/DB</button><button onclick="hajareChooseService('CCTV Installation')">CCTV</button><button onclick="hajareChooseService('EV Charger Installation')">EV Charger</button><button onclick="hajareChooseService('Emergency Electrician')">Emergency</button><button onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book Service</button><button onclick="window.open('https://www.google.com/search?q=Electrician+Hajare+Electrical','_blank')">View Reviews</button></div></div><div class="hajare-chat-input"><input id="hajareChatInput" placeholder="Type here..." onkeydown="if(event.key==='Enter') hajareSendChat()"><button onclick="hajareSendChat()">Send</button></div></div>
