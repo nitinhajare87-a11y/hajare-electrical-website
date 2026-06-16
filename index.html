@@ -161,7 +161,15 @@ installBtns.forEach(function(btn) {
 
 <script>
 const HAJARE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzni_Q4pHkZ3v0Z76DhmXd95f_sAL04nwkPt1EIC1oRA43byL2r7jPiHxttttTQpheo/exec";
-let hajareLead = {service:"",name:"",mobile:"",address:"",problem:"",step:"service"};
+let hajareLead = {
+  service:"",
+  name:"",
+  mobile:"",
+  address:"",
+  dateTime:"",
+  workDetails:"",
+  step:"service"
+};
 const hajareOwnerWhatsApp = "918800466063";
 
 function submitLeadToSheet(data,onDone,onFail){
@@ -189,6 +197,58 @@ function hajareProcessChat(text){
  }
  if(hajareLead.step==="name"){hajareLead.name=text;hajareLead.step="mobile";hajareAddMsg("Thanks "+hajareLead.name+". Mobile number type kare.");return;}
  if(hajareLead.step==="mobile"){hajareLead.mobile=text;hajareLead.step="address";hajareAddMsg("Address / Area bataiye. Example: Wakad, Baner, PCMC, Pune.");return;}
+if(hajareLead.step==="mobile"){
+  hajareLead.mobile=text;
+  hajareLead.step="address";
+  hajareAddMsg("Address / Area bataiye. Example: Wakad, Baner, PCMC, Pune.");
+  return;
+}
+
+if(hajareLead.step==="address"){
+  hajareLead.address=text;
+  hajareLead.step="dateTime";
+  hajareAddMsg("Service booking date/time batana chahenge? Optional hai. Example: Tomorrow 10 AM. Agar nahi batana to 'skip' type kare.");
+  return;
+}
+
+if(hajareLead.step==="dateTime"){
+  hajareLead.dateTime = text.toLowerCase()==="skip" ? "" : text;
+  hajareLead.step="workDetails";
+  hajareAddMsg("Exact work details bataye? Optional hai. Example: Fan fitting, switch board repair, drilling work, wiring point. Agar nahi batana to 'skip' type kare.");
+  return;
+}
+
+if(hajareLead.step==="workDetails"){
+  hajareLead.workDetails = text.toLowerCase()==="skip" ? "" : text;
+  hajareLead.step="problem";
+  hajareAddMsg("Problem short me bataiye. Example: Fan not working, DB trip, light fitting, CCTV installation.");
+  return;
+}
+
+if(hajareLead.step==="problem"){
+  hajareLead.problem=text;
+  hajareLead.step="done";
+
+  hajareAddMsg("Thank you ✅ Aapki enquiry submit ho rahi hai.");
+
+  submitLeadToSheet({
+    name:hajareLead.name,
+    mobile:hajareLead.mobile,
+    address:hajareLead.address,
+    date:hajareLead.dateTime,
+    service:hajareLead.service,
+    problem:hajareLead.problem + 
+      (hajareLead.workDetails ? "\nWork Details: " + hajareLead.workDetails : ""),
+    source:"AI Chatbot"
+  });
+
+  setTimeout(function(){
+    hajareAddMsg("Urgent service ke liye Call ya WhatsApp button use kare.");
+    hajareShowActionButtons();
+  },700);
+
+  return;
+}
  if(hajareLead.step==="address"){hajareLead.address=text;hajareLead.step="problem";hajareAddMsg("Problem short me bataiye. Example: Fan not working, DB trip, EV charger installation.");return;}
  if(hajareLead.step==="problem"){hajareLead.problem=text;hajareLead.step="done";hajareAddMsg("Thank you ✅ Aapki enquiry owner ko send ho rahi hai.");submitLeadToSheet({name:hajareLead.name,mobile:hajareLead.mobile,address:hajareLead.address,service:hajareLead.service,problem:hajareLead.problem,source:"AI Chatbot"});setTimeout(function(){hajareAddMsg("Urgent service ke liye WhatsApp/Call bhi kar sakte hain.");hajareShowActionButtons();},700);return;}
  hajareAddMsg("Aapki enquiry already recorded hai. Urgent ho to Call Now ya WhatsApp button use kare.");
