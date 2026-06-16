@@ -20,28 +20,30 @@ content="Electrician Pune, Electrician Charholi, Electrician Lohegaon, Fan Repai
 <meta name="description" content="21+ years experienced electrician in Pune & PCMC. House wiring, MCB DB, inverter, CCTV, home automation, EV charger and industrial electrical maintenance.">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="top-alert">⚡ 24×7 Emergency Electrician Available — Call 8800466063</div>
-<header>
-  <div class="logo-wrap"><img src="chatbot.png"><div><b>HAJARE ELECTRICAL & ELECTRONICS SERVICES</b><small>Customer Delight Is Our Reward</small></div></div>
-  <nav><a href="#home">Home</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#booking">Booking</a><a href="#contact">Contact</a></nav>
-</header>
-<script>
+
+ <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js');
+}
+
 let deferredPrompt;
 const installBtn = document.getElementById("installAppBtn");
 
 window.addEventListener("beforeinstallprompt", function(e) {
   e.preventDefault();
   deferredPrompt = e;
-  installBtn.style.display = "inline-block";
+  if (installBtn) {
+    installBtn.style.display = "inline-block";
+  }
 });
 
 if (installBtn) {
   installBtn.addEventListener("click", async function() {
     if (!deferredPrompt) {
-      alert("Install option available nahi hai. Chrome menu ⋮ se 'Add to Home screen' use karo.");
+      alert("Install option abhi available nahi hai. Chrome menu ⋮ se Add to Home screen try karo.");
       return;
     }
+
     deferredPrompt.prompt();
     await deferredPrompt.userChoice;
     deferredPrompt = null;
@@ -49,6 +51,13 @@ if (installBtn) {
   });
 }
 </script>
+<body>
+<div class="top-alert">⚡ 24×7 Emergency Electrician Available — Call 8800466063</div>
+<header>
+  <div class="logo-wrap"><img src="chatbot.png"><div><b>HAJARE ELECTRICAL & ELECTRONICS SERVICES</b><small>Customer Delight Is Our Reward</small></div></div>
+  <nav><a href="#home">Home</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#booking">Booking</a><a href="#contact">Contact</a></nav>
+</header>
+
 <section id="home" class="hero"><div class="hero-overlay"></div><div class="hero-card">
   <span class="pill">Pune & PCMC Trusted Electrician</span>
   <h1>Big or Small,<br><span>We Do Work All</span></h1>
@@ -167,28 +176,7 @@ function hajareShowActionButtons(){
 }
 setTimeout(function(){const label=document.getElementById("hajareAiLabel");if(label)label.innerText="👋 May I Help You?";},2000);
 </script>
- <script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js');
-}
-  <script>
-let deferredPrompt;
-const installBtn = document.getElementById("installAppBtn");
-
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  installBtn.style.display = "inline-block";
-});
-
-installBtn.addEventListener("click", async () => {
-  if (!deferredPrompt) return;
-  deferredPrompt.prompt();
-  await deferredPrompt.userChoice;
-  deferredPrompt = null;
-  installBtn.style.display = "none";
-});
-</script>
+ 
 </script>
 </body>
 </html>
