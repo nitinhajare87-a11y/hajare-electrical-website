@@ -413,4 +413,20 @@ footer{text-align:center;background:#06172d;color:white;padding:36px 6%;padding-
   }
   .features p{font-size:16px!important}
 }
+header{
+  padding:8px 6% !important;
+}
 
+.logo-wrap img{
+  width:48px !important;
+  height:48px !important;
+}
+
+.hero{
+  padding-top:45px !important;
+  min-height:520px !important;
+}
+
+.hero h1{
+  margin-top:12px !important;
+}
